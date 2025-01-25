@@ -1,0 +1,10 @@
+Editor SQL.
+
+- Abstrair conexão com banco de dados com ini
+- Gerar exemplo de sql, abstrair exemplo gerado com ini
+- formatar, limpar, executar
+- salvar query criada em arquivo.sql
+- imprimir, exportar resultados
+
+Integrar editor de FR3 para personalizar resultado da impressão.
+
