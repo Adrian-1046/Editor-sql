@@ -127,9 +127,11 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Editor.pas">
-            <Form>Form1</Form>
+            <Form>fmEditorSQL</Form>
             <FormType>fmx</FormType>
         </DCCReference>
+        <DCCReference Include="EditorFunctions.pas"/>
+        <DCCReference Include="DBReadConnection.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

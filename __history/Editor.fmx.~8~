@@ -1,0 +1,90 @@
+object fmEditorSQL: TfmEditorSQL
+  Left = 0
+  Top = 0
+  Caption = 'EditorSQL'
+  ClientHeight = 820
+  ClientWidth = 1548
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  DesignerMasterStyle = 0
+  object Panel1: TPanel
+    Position.X = 24.000000000000000000
+    Position.Y = 424.000000000000000000
+    Size.Width = 1505.000000000000000000
+    Size.Height = 337.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Grid1: TGrid
+      CanFocus = True
+      ClipChildren = True
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 1489.000000000000000000
+      Size.Height = 321.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 1485.000000000000000000
+      Viewport.Height = 296.000000000000000000
+    end
+  end
+  object Panel2: TPanel
+    Position.X = 24.000000000000000000
+    Position.Y = 72.000000000000000000
+    Size.Width = 1505.000000000000000000
+    Size.Height = 289.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Edit1: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 0
+      TextSettings.VertAlign = Leading
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 1489.000000000000000000
+      Size.Height = 273.000000000000000000
+      Size.PlatformDefault = False
+      CharCase = ecUpperCase
+    end
+  end
+  object btnLimparDeslimpar: TButton
+    Position.X = 1400.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 129.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'Limpar/Deslimpar'
+    TextSettings.Trimming = None
+  end
+  object btnImprimirt: TButton
+    Position.X = 1440.000000000000000000
+    Position.Y = 769.000000000000000000
+    Size.Width = 89.000000000000000000
+    Size.Height = 43.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'Imprimir'
+    TextSettings.Trimming = None
+  end
+  object btnExecutar: TButton
+    Position.X = 1432.000000000000000000
+    Position.Y = 369.000000000000000000
+    Size.Width = 97.000000000000000000
+    Size.Height = 47.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Executar'
+    TextSettings.Trimming = None
+  end
+  object btnGerarExemplo: TButton
+    Position.X = 24.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 105.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    Text = 'Gerar Exemplo'
+    TextSettings.Trimming = None
+  end
+end
