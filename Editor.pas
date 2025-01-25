@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, FMX.StdCtrls, System.Rtti, FMX.Grid.Style,
   FMX.ScrollBox, FMX.Grid, FMX.Edit,
 
-  iniFiles;
+  EditorFunctions, DBReadConnection, FMX.Layouts;
 
 type
   TfmEditorSQL = class(TForm)
@@ -21,7 +21,6 @@ type
     edtQuery: TEdit;
     Grid1: TGrid;
     procedure btnGerarExemploClick(Sender: TObject);
-    procedure gerarExemplo;
   private
     { Private declarations }
   public
@@ -30,38 +29,32 @@ type
 
 var
   fmEditorSQL: TfmEditorSQL;
-  ConfigIni : TIniFile;
-  BancoDeDadosConectado, CaminhoDaBase, senhaDaBase, usuarioDaBase, CaminhoDaDll : String;
+
 
 implementation
 {$R *.fmx}
 
 procedure TfmEditorSQL.btnGerarExemploClick(Sender: TObject);
+var
+  Continuar : Integer;
 begin
   if edtQuery.Text = '' then
-    gerarExemplo
-  //else
-  //  questionarIntencao;
+    edtQuery.Text := gerarExemplo
+  else
+  begin
+    Continuar := MessageDlg('Deseja SOBRESCREVER a query atual?',
+                            TMsgDlgType.mtConfirmation,
+                            [TMsgDlgBtn.mbYes, TMsgDlgBtn.mbNo],
+                            0);
+
+    if Continuar = mrYes then
+      edtQuery.Text := gerarExemplo;
+
+  end;
 end;
 
-procedure TfmEditorSQL.gerarExemplo;
 begin
-  if BancoDeDadosConectado = 'FIREBIRD' then
-    edtQuery.Text := 'SELECT FIRST 5 * FROM ENTIDADE_001';
-  if BancoDeDadosConectado = 'POSTGRES' then
-    edtQuery.Text := 'SELECT * FROM ENTIDADE_001 LIMIT 5';
-  //if not (BancoDeDadosConectado in ['FIREBIRD', 'POSTGRES']) then
-  //  edtQuery.Text := 'SELECT * FROM ENTIDADE_001';
-end;
-
-begin
-  ConfigIni := TIniFile.Create('./Config.ini');
-    BancoDeDadosConectado := ConfigIni.ReadString('Base de Dados','SMDB','SMDB não encontrado no ini');
-    CaminhoDaBase         := ConfigIni.ReadString('Base de Dados','BASE','BASE não encontrado no ini');
-    CaminhoDaDll          := ConfigIni.ReadString('Base de Dados','DLL~','DLL~ não encontrado no ini');
-    usuarioDaBase         := ConfigIni.ReadString('Base de Dados','USER','USER não encontrado no ini');
-    senhaDaBase           := ConfigIni.ReadString('Base de Dados','PASS','PASS não encontrado no ini');
-  ConfigIni.Free;
+  ConectarAoBancoDeDados
 end.
 
 

@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F7641678-39FD-4B95-8A5E-D3AE3575E398}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="EditorSQL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="EditorSQL">
+        <MSBuild Projects="EditorSQL.dproj"/>
+    </Target>
+    <Target Name="EditorSQL:Clean">
+        <MSBuild Projects="EditorSQL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="EditorSQL:Make">
+        <MSBuild Projects="EditorSQL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="EditorSQL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="EditorSQL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="EditorSQL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -3,7 +3,9 @@ program EditorSQL;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Editor in 'Editor.pas' {fmEditorSQL};
+  Editor in 'Editor.pas' {fmEditorSQL},
+  EditorFunctions in 'EditorFunctions.pas',
+  DBReadConnection in 'DBReadConnection.pas';
 
 {$R *.res}
 
