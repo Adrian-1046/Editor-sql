@@ -4,9 +4,11 @@ object fmEditorSQL: TfmEditorSQL
   Caption = 'EditorSQL'
   ClientHeight = 820
   ClientWidth = 1548
+  Position = Designed
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
   DesignerMasterStyle = 0
   object Panel1: TPanel
     Position.X = 24.000000000000000000
@@ -23,7 +25,7 @@ object fmEditorSQL: TfmEditorSQL
       Size.Width = 1489.000000000000000000
       Size.Height = 321.000000000000000000
       Size.PlatformDefault = False
-      TabOrder = 0
+      TabOrder = 1
       Viewport.Width = 1485.000000000000000000
       Viewport.Height = 296.000000000000000000
     end
@@ -35,16 +37,19 @@ object fmEditorSQL: TfmEditorSQL
     Size.Height = 289.000000000000000000
     Size.PlatformDefault = False
     TabOrder = 1
-    object edtQuery: TEdit
-      Touch.InteractiveGestures = [LongTap, DoubleTap]
-      TabOrder = 0
-      TextSettings.VertAlign = Leading
+    object edtQuery: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      CharCase = ecUpperCase
+      DataDetectorTypes = []
+      TextSettings.WordWrap = True
       Position.X = 8.000000000000000000
       Position.Y = 8.000000000000000000
       Size.Width = 1489.000000000000000000
       Size.Height = 273.000000000000000000
       Size.PlatformDefault = False
-      CharCase = ecUpperCase
+      TabOrder = 0
+      Viewport.Width = 1485.000000000000000000
+      Viewport.Height = 269.000000000000000000
     end
   end
   object btnLimparDeslimpar: TButton
@@ -56,6 +61,7 @@ object fmEditorSQL: TfmEditorSQL
     TabOrder = 5
     Text = 'Limpar/Deslimpar'
     TextSettings.Trimming = None
+    OnClick = btnLimparDeslimparClick
   end
   object btnImprimirt: TButton
     Position.X = 1440.000000000000000000
@@ -76,6 +82,7 @@ object fmEditorSQL: TfmEditorSQL
     TabOrder = 3
     Text = 'Executar'
     TextSettings.Trimming = None
+    OnClick = btnExecutarClick
   end
   object btnGerarExemplo: TButton
     Position.X = 24.000000000000000000
@@ -87,5 +94,37 @@ object fmEditorSQL: TfmEditorSQL
     Text = 'Gerar Exemplo'
     TextSettings.Trimming = None
     OnClick = btnGerarExemploClick
+  end
+  object FDConnection1: TFDConnection
+    Left = 816
+    Top = 160
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 928
+    Top = 160
+  end
+  object DataSource1: TDataSource
+    DataSet = FDQuery1
+    Left = 608
+    Top = 560
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSource = DataSource1
+    ScopeMappings = <>
+    Left = 488
+    Top = 560
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 372
+    Top = 557
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = Grid1
+      Columns = <>
+    end
   end
 end

@@ -11,11 +11,11 @@ implementation
 function gerarExemplo : String;
 begin
   if BancoDeDadosConectado = 'FIREBIRD' then
-    Result := 'SELECT FIRST 5 * FROM ENTIDADE_001';
+    Result := 'SELECT FIRST 500 * FROM ENTIDADES';
   if BancoDeDadosConectado = 'POSTGRES' then
-    Result := 'SELECT * FROM ENTIDADE_001 LIMIT 5';
+    Result := 'SELECT * FROM ENTIDADES LIMIT 500';
   if not (BancoDeDadosConectado ='FIREBIRD') and not (BancoDeDadosConectado = 'POSTGRES') then
-    Result := 'SELECT * FROM ENTIDADE_001 --limite sua consulta a 500';
+    Result := 'SELECT * FROM ENTIDADES';
 end;
 
 end.
