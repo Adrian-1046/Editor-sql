@@ -1,0 +1,20 @@
+Use a "maior" versão para a melhor experiência. 
+
+Na pasta da versão, você vai encontrar o executável do editor, alguns arquivos adicionais que não devem ser apagados e um arquivo chamado Config.ini.
+Config.ini deve ser ajustado para o programa funcionar. Se pretende executar a base teste, que vem com a versão, corrija o campo "BASE" para receber o caminho onde o arquivo 'TESTE' está localizado. Por padrão, vai estar na raiz da versão.
+
+Config.ini tem todas as tags utilizadas na conexão com o banco. DLL não é necessária. Caso deseje conectar no seu próprio banco de dados, basta configurar o arquivo corretamente.
+
+PARA QUEM NÃO COSTUMA MEXER COM BANCO DE DADOS:
+Para conectar até na base teste inclusa na versão, será necessário instalar o firebird e abrir a porta em que ele estiver rodando no firewall. Apenas o protocolo TCP é necessário.
+A base foi criada em Firebird 3. Baixe o instalador do site oficial ou terceiro de sua confiança.
+
+## Para descobrir a porta:
+Abra o "Monitor de Recursos", no windows, aba "Rede", escopo "Portas de Escuta", clique sobre os registros e comece a digitar "firebird". Na coluna "Porta" está o número de porta que deve ser liberado no firewall.
+
+## Para liberar a porta no Firewall:
+Abra o "Windows Defender Firewall com Segurança Avançada", no windows, no canto superior esquerdo, clique sobre "Regras de Entrada", agora no canto superior esquerdo, clique sobre "Nova Regra", Marque a opção "Porta" na janela que abriu, avance, digite a porta, avance como preferir até finalizar o processo.
+Certifique-se de "Permitir Conexões".
+
+Ainda no "Windows Defender Firewall com Segurança Avançada", no canto superior esquerdo, clique sobre "Regras de Saída"; o restante do processo é muito parecido com o da porta de entrada e a porta a ser liberada será a mesma.
+Certifique-se de "Permitir Conexões".
