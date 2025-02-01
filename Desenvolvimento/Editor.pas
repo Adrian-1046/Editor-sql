@@ -17,27 +17,52 @@ uses
   Data.DBXPool, Data.DBXTrace, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs, Fmx.Bind.Editors,
-  Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope;
+  Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope, FMX.Styles.Objects,
+  System.ImageList, FMX.ImgList, System.Skia, FMX.Skia;
 
 type
   TfmEditorSQL = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
-    btnLimparDeslimpar: TButton;
-    btnExecutar: TButton;
-    btnGerarExemplo: TButton;
     edtQuery: TMemo;
     FDConnection1: TFDConnection;
     FDQuery1: TFDQuery;
     DataSource1: TDataSource;
+    btnGerarExemplo: TRoundRect;
+    Label1: TLabel;
+    SkAnimatedImage1: TSkAnimatedImage;
     Grid1: TGrid;
+    btnLimparDeslimpar: TRoundRect;
+    Label2: TLabel;
+    SkAnimatedImage2: TSkAnimatedImage;
+    btnExecutar: TRoundRect;
+    Label3: TLabel;
+    SkAnimatedImage3: TSkAnimatedImage;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    Rectangle1: TRectangle;
+    SkAnimatedImage4: TSkAnimatedImage;
     procedure btnGerarExemploClick(Sender: TObject);
     procedure btnLimparDeslimparClick(Sender: TObject);
     procedure btnExecutarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnGerarExemploMouseEnter(Sender: TObject);
+    procedure btnGerarExemploMouseLeave(Sender: TObject);
+    procedure btnGerarExemploMouseDown(Sender: TObject; Button: TMouseButton;   Shift: TShiftState; X, Y: Single);
+    procedure btnGerarExemploMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure btnLimparDeslimparMouseEnter(Sender: TObject);
+    procedure btnLimparDeslimparMouseLeave(Sender: TObject);
+    procedure btnLimparDeslimparMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure btnLimparDeslimparMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+    procedure btnExecutarMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure btnExecutarMouseEnter(Sender: TObject);
+    procedure btnExecutarMouseLeave(Sender: TObject);
+    procedure btnExecutarMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Single);
+    procedure edtQueryChange(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     procedure ConfigurarConexao;
   public
@@ -73,6 +98,22 @@ begin
   end;
 end;
 
+procedure TfmEditorSQL.edtQueryChange(Sender: TObject);
+begin
+  if sQuery <> '' then
+  begin
+    Label2.Text := 'Deslimpar';
+    SkAnimatedImage4.Visible := True;
+    SkAnimatedImage2.Visible := False;
+  end
+  else
+  begin
+    Label2.Text := 'Limpar';
+    SkAnimatedImage4.Visible := False;
+    SkAnimatedImage2.Visible := True;
+  end;
+end;
+
 procedure TfmEditorSQL.btnExecutarClick(Sender: TObject);
 begin
   if edtQuery.Text = '' then
@@ -95,7 +136,6 @@ begin
     on E: Exception do
       ShowMessage('Erro inesperado: ' + E.Message);
   end;
-
   Grid1.ReloadPresentation;
 end;
 
@@ -122,13 +162,92 @@ begin
     edtQuery.Text := '';
   end
   else
+  begin
     edtQuery.Text := sQuery;
+    sQuery := '';
+    edtQueryChange(nil);
+  end;
 end;
 
 procedure TfmEditorSQL.FormCreate(Sender: TObject);
 begin
   ConfigurarConexao;
 end;
+
+procedure TfmEditorSQL.FormResize(Sender: TObject);
+begin
+  btnLimparDeslimpar.Position.X := Round(Rectangle1.Width - 228);
+  btnExecutar.Position.X := Round(Rectangle1.Width - 228);
+
+  panel1.Width := Round(Rectangle1.Width - 43);
+  panel2.Width := Round(Rectangle1.Width - 43);
+end;
+
+{$REGION 'Estilo'}
+procedure TfmEditorSQL.btnGerarExemploMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnGerarExemplo.Fill.Color := TAlphaColorRec.MedGray;
+end;
+
+procedure TfmEditorSQL.btnGerarExemploMouseEnter(Sender: TObject);
+begin
+  btnGerarExemplo.Fill.Color := TAlphaColorRec.Lightgray;
+end;
+
+procedure TfmEditorSQL.btnGerarExemploMouseLeave(Sender: TObject);
+begin
+  btnGerarExemplo.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+procedure TfmEditorSQL.btnGerarExemploMouseUp(Sender: TObject;  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnGerarExemplo.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+procedure TfmEditorSQL.btnLimparDeslimparMouseDown(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnLimparDeslimpar.Fill.Color := TAlphaColorRec.MedGray;
+end;
+
+procedure TfmEditorSQL.btnLimparDeslimparMouseEnter(Sender: TObject);
+begin
+  btnLimparDeslimpar.Fill.Color := TAlphaColorRec.Lightgray;
+end;
+
+procedure TfmEditorSQL.btnLimparDeslimparMouseLeave(Sender: TObject);
+begin
+  btnLimparDeslimpar.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+procedure TfmEditorSQL.btnLimparDeslimparMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnLimparDeslimpar.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+procedure TfmEditorSQL.btnExecutarMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnExecutar.Fill.Color := TAlphaColorRec.MedGray;
+end;
+
+procedure TfmEditorSQL.btnExecutarMouseEnter(Sender: TObject);
+begin
+  btnExecutar.Fill.Color := TAlphaColorRec.Lightgray;
+end;
+
+procedure TfmEditorSQL.btnExecutarMouseLeave(Sender: TObject);
+begin
+  btnExecutar.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+procedure TfmEditorSQL.btnExecutarMouseUp(Sender: TObject;  Button: TMouseButton; Shift: TShiftState; X, Y: Single);
+begin
+  btnExecutar.Fill.Color := TAlphaColorRec.Gainsboro;
+end;
+
+{$ENDREGION}
 
 end.
 

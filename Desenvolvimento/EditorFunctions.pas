@@ -34,7 +34,5 @@ begin
     getQueryIni.Free;
   end;
 end;
-
-
 end.
 
