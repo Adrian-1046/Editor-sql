@@ -5098,6 +5098,8 @@ object fmEditorSQL: TfmEditorSQL
     end
     object Label1: TLabel
       StyledSettings = [Family, Style, FontColor]
+      HelpKeyword = 'G'
+      HelpType = htKeyword
       Position.X = 16.000000000000000000
       Size.Width = 153.000000000000000000
       Size.Height = 56.000000000000000000
@@ -5127,6 +5129,26 @@ object fmEditorSQL: TfmEditorSQL
       Viewport.Width = 1501.000000000000000000
       Viewport.Height = 352.000000000000000000
     end
+    object Arc6: TArc
+      Position.X = -9.000000000000000000
+      Position.Y = -9.000000000000000000
+      RotationAngle = -90.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claDarkgray
+      Stroke.Thickness = 10.000000000000000000
+    end
+    object Arc7: TArc
+      Position.X = -8.000000000000000000
+      Position.Y = 336.000000000000000000
+      RotationAngle = -180.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claDarkgray
+      Stroke.Thickness = 10.000000000000000000
+    end
   end
   object Panel2: TPanel
     Position.X = 24.000000000000000000
@@ -5145,9 +5167,50 @@ object fmEditorSQL: TfmEditorSQL
       Size.Width = 1505.000000000000000000
       Size.Height = 289.000000000000000000
       Size.PlatformDefault = False
+      StyleLookup = 'edtQueryStyle1'
       TabOrder = 0
       Viewport.Width = 1501.000000000000000000
       Viewport.Height = 285.000000000000000000
+      object Memo1: TMemo
+        Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+        DataDetectorTypes = []
+        Position.X = 128.000000000000000000
+        Position.Y = 168.000000000000000000
+        TabOrder = 0
+        Viewport.Width = 50.000000000000000000
+        Viewport.Height = 50.000000000000000000
+        object SVGIconImage1: TSVGIconImage
+          MultiResBitmap = <
+            item
+            end>
+          DisableInterpolation = True
+          Position.X = 8.000000000000000000
+          Position.Y = 8.000000000000000000
+          Size.Width = 50.000000000000000000
+          Size.Height = 50.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+    end
+    object Arc1: TArc
+      Position.X = -9.000000000000000000
+      Position.Y = -9.000000000000000000
+      RotationAngle = -90.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claDarkgray
+      Stroke.Thickness = 10.000000000000000000
+    end
+    object Arc2: TArc
+      Position.X = -9.000000000000000000
+      Position.Y = 248.000000000000000000
+      RotationAngle = -180.000000000000000000
+      Size.Width = 50.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = claDarkgray
+      Stroke.Thickness = 10.000000000000000000
     end
   end
   object btnImprimirt: TButton
@@ -5175,6 +5238,8 @@ object fmEditorSQL: TfmEditorSQL
     OnMouseLeave = btnLimparDeslimparMouseLeave
     object Label2: TLabel
       StyledSettings = [Family, Style, FontColor]
+      HelpKeyword = 'L'
+      HelpType = htKeyword
       Position.X = 8.000000000000000000
       Size.Width = 145.000000000000000000
       Size.Height = 56.000000000000000000
@@ -5183,6 +5248,7 @@ object fmEditorSQL: TfmEditorSQL
       TextSettings.HorzAlign = Trailing
       Text = 'Limpar'
       TabOrder = 0
+      OnClick = btnLimparDeslimparClick
     end
     object SkAnimatedImage2: TSkAnimatedImage
       Position.X = 32.000000000000000000
@@ -6175,6 +6241,8 @@ object fmEditorSQL: TfmEditorSQL
     OnMouseLeave = btnExecutarMouseLeave
     object Label3: TLabel
       StyledSettings = [Family, Style, FontColor]
+      HelpKeyword = 'E-'
+      HelpType = htKeyword
       Position.X = 8.000000000000000000
       Size.Width = 145.000000000000000000
       Size.Height = 56.000000000000000000
@@ -6183,6 +6251,7 @@ object fmEditorSQL: TfmEditorSQL
       TextSettings.HorzAlign = Trailing
       Text = 'Executar'
       TabOrder = 0
+      OnClick = btnExecutarClick
     end
     object SkAnimatedImage3: TSkAnimatedImage
       Position.X = 32.000000000000000000

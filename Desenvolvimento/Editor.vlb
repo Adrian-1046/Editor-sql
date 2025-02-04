@@ -22,8 +22,9 @@ Coordinates=40,70,89,58
 Visible=True
 
 []
-Coordinates=247,56,91,36
+Coordinates=565,1,126,36
 Visible=True
+ExplicitSubNodes=DesignInfo
 
 [btnExecutar]
 Coordinates=247,1,83,36
@@ -40,9 +41,6 @@ Coordinates=368,177,115,36
 [Grid1]
 Coordinates=72,1,46,58
 Visible=True
-
-[SkAnimatedImage3]
-Coordinates=565,1,126,36
 
 [SkAnimatedImage2]
 Coordinates=565,56,126,36
@@ -61,4 +59,10 @@ Coordinates=130,0,106,80
 
 [BindingsList1]
 Coordinates=274,187,91,36
+
+[SkAnimatedImage4]
+Coordinates=368,111,126,36
+
+[Rectangle1]
+Coordinates=185,206,80,36
 
