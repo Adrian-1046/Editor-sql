@@ -18,7 +18,8 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, FireDAC.Comp.DataSet, Data.Bind.EngExt,
   Fmx.Bind.DBEngExt, Fmx.Bind.Grid, System.Bindings.Outputs, Fmx.Bind.Editors,
   Data.Bind.Components, Data.Bind.Grid, Data.Bind.DBScope, FMX.Styles.Objects,
-  System.ImageList, FMX.ImgList, System.Skia, FMX.Skia;
+  System.ImageList, FMX.ImgList, System.Skia, FMX.Skia, FMX.WebBrowser,
+  FMX.SVGIconImage, FMX.SVGIconImageList;
 
 type
   TfmEditorSQL = class(TForm)
@@ -37,12 +38,18 @@ type
     SkAnimatedImage2: TSkAnimatedImage;
     btnExecutar: TRoundRect;
     Label3: TLabel;
-    SkAnimatedImage3: TSkAnimatedImage;
     BindSourceDB1: TBindSourceDB;
     BindingsList1: TBindingsList;
     LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
     Rectangle1: TRectangle;
     SkAnimatedImage4: TSkAnimatedImage;
+    Memo1: TMemo;
+    SkAnimatedImage3: TSkAnimatedImage;
+    SVGIconImage1: TSVGIconImage;
+    Arc1: TArc;
+    Arc2: TArc;
+    Arc6: TArc;
+    Arc7: TArc;
     procedure btnGerarExemploClick(Sender: TObject);
     procedure btnLimparDeslimparClick(Sender: TObject);
     procedure btnExecutarClick(Sender: TObject);
@@ -125,11 +132,14 @@ begin
   try
     FDQuery1.Close;
     FDQuery1.SQL.Clear;
-    FDQuery1.SQL.Add(edtQuery.Text);
-    if (UpperCase(trim(edtQuery.Text)).contains('SELECT')) or (UpperCase(trim(edtQuery.Text)).contains('WITH')) then
-      FDQuery1.Open
-    else
-      FDQuery1.ExecSQL;
+
+    if edtQuery.SelText <> ''
+    then FDQuery1.SQL.Add(edtQuery.SelText)
+    else FDQuery1.SQL.Add(edtQuery.Text);
+
+    if (UpperCase(trim(FDQuery1.SQL.Text)).contains('SELECT')) or (UpperCase(trim(FDQuery1.SQL.Text)).contains('WITH'))
+    then FDQuery1.Open
+    else FDQuery1.ExecSQL;
   except
     on E: EDatabaseError do
       ShowMessage('Erro ao executar a query: ' + E.Message);
