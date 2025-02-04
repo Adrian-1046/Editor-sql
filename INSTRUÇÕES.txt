@@ -13,7 +13,7 @@ A base foi criada em Firebird 3. Baixe o instalador do site oficial ou terceiro 
 Abra o "Monitor de Recursos", no windows, aba "Rede", escopo "Portas de Escuta", clique sobre os registros e comece a digitar "firebird". Na coluna "Porta" está o número de porta que deve ser liberado no firewall.
 
 ## Para liberar a porta no Firewall:
-Abra o "Windows Defender Firewall com Segurança Avançada", no windows, no canto superior esquerdo, clique sobre "Regras de Entrada", agora no canto superior esquerdo, clique sobre "Nova Regra", Marque a opção "Porta" na janela que abriu, avance, digite a porta, avance como preferir até finalizar o processo.
+Abra o "Windows Defender Firewall com Segurança Avançada", no windows. No canto superior esquerdo, clique sobre "Regras de Entrada"; agora, no canto superior direito, clique sobre "Nova Regra", Marque a opção "Porta" na janela que abriu, avance, digite a porta, avance como preferir até finalizar o processo.
 Certifique-se de "Permitir Conexões".
 
 Ainda no "Windows Defender Firewall com Segurança Avançada", no canto superior esquerdo, clique sobre "Regras de Saída"; o restante do processo é muito parecido com o da porta de entrada e a porta a ser liberada será a mesma.
